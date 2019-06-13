@@ -1,0 +1,89 @@
+﻿@model Hospital_Management.Models.Doctor
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section admin_navbar{
+    @Html.Partial("_AdminNavbarPartial", "Doctors")
+}
+
+<a href="@Url.Action("Index", "DepartmentAdd")" class="btn btn-success" style="float:right">
+    <span class="glyphicon glyphicon-plus"></span>
+    Add Department
+</a>
+
+@using (Html.BeginForm("Create","Doctor",FormMethod.Post,new { enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal col-md-offset-3">
+   
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.qualification, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.qualification, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.qualification, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dept, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.dept, new SelectList(Model.getAllDepartmentsName, "Text", "Text"), "-Select Department-", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.dept, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.designation, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.designation, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.designation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.gender, new SelectList(Model.getGender, "Text", "Text"), "-Select Gender-", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.phone_no, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.phone_no, new { htmlAttributes = new { @class = "form-control", placeholder = "Phone number will be 11 digits long" } })
+            @Html.ValidationMessageFor(model => model.phone_no, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+           <input class = "form-control" type="file" name="ImageFile" required/>
+            @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-success col-md-offset-1" style="color:white;font-size: 1.1em;" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    <p class="btn btn-danger"><span class="glyphicon glyphicon-arrow-left"></span> @Html.ActionLink("Back to List", "Index", "", new { Style = "color:white;line-height: 1.5;" })</p>
+</div>

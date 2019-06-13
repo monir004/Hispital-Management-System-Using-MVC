@@ -1,0 +1,93 @@
+﻿@model Hospital_Management.Models.Medicine
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section admin_navbar{
+    @Html.Partial("_AdminNavbarPartial", "Storehouse")
+}
+
+@*<a href="@Url.Action("Create", "Medicine")" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus"></span>
+        Create New
+    </a>*@
+@*<br /><br />*@
+
+
+
+
+
+@using (Html.BeginForm("Index2", "Medicine", FormMethod.Post))
+{
+
+    <div class="input-group">
+        <a href="@Url.Action("Create", "Medicine")" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span>
+            Create New
+        </a>
+        @Html.DropDownListFor(model => model.brand, new SelectList(Model.getAllBrandsDistinctName, "Text", "Text"), "-Select Brand-", new { @class = "form-control btn btn-info" , style="float:right" })
+        <span class="input-group-btn">
+            <input type="submit" value="search" class="btn btn-primary"/>
+        </span>
+    </div>
+
+}
+<br />
+
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brand)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.getAllMedicinesList)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brand)
+            </td>
+            <td>
+
+                <a href="@Url.Action("Edit", "Medicine", new { id = item.id })" class="btn btn-success">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    Edit
+                </a>
+                <a href="@Url.Action("Details", "Medicine", new { id = item.id })" class="btn btn-success">
+                    <span class="glyphicon glyphicon-th-list"></span>
+                    Details
+                </a>
+                <a href="@Url.Action("Delete", "Medicine", new { id = item.id })" class="btn btn-success">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    Delete
+                </a>
+
+                @*<p class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>@Html.ActionLink(" Edit", "Edit", new { id = item.id }, new { Style = "color:white" }) </p>
+                    <p class="btn btn-success"><span class="glyphicon glyphicon-th-list"></span>@Html.ActionLink(" Details", "Details", new { id = item.id }, new { Style = "color:white" }) </p>
+                    <p class="btn btn-success"><span class="glyphicon glyphicon-trash"></span>@Html.ActionLink(" Delete", "Delete", new { id = item.id }, new { Style = "color:white" }) </p>*@
+            </td>
+        </tr>
+    }
+
+</table>

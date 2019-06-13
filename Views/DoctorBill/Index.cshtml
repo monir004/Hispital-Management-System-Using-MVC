@@ -1,0 +1,70 @@
+﻿@model Hospital_Management.Models.DoctorBill
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_TransactionsLayout.cshtml";
+}
+
+@section Transactions_navbar{
+    @Html.Partial("_TransactionsPartial", "Medicine Purchase")
+}
+
+@using (Html.BeginForm("Create", "DoctorBill", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>DoctorBill</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.p_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.p_id, new SelectList(Model.getAllPatientsName, "Value", "Text"), "-Select Patient-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.p_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.d_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.d_id, new SelectList(Model.getAllDoctorsName, "Value", "Text"), "-Select Doctor-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.d_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.visit_bill, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.visit_bill, new SelectList(Model.getAllVisitBills, "Text", "Text"), "-Select Visit Bills-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.visit_bill, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.days, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.days, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.days, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.total_bill, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.total_bill, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.total_bill, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

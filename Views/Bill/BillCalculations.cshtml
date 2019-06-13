@@ -1,0 +1,62 @@
+﻿@model Hospital_Management.Models.Bill
+
+@{
+    ViewBag.Title = "BillCalculations";
+    Layout = "~/Views/Shared/_TransactionsLayout.cshtml";
+}
+@section Transactions_navbar{
+    @Html.Partial("_TransactionsPartial", "Calculate Bill")
+}
+<div class="row">
+    <div class="col-md-4 col-sm-4">
+        Date: <i>@Html.DisplayFor(model => model.date)</i>
+    </div>
+    <div class="col-md-8 col-sm-8">
+        <b>Patient Name : @Html.DisplayFor(model => model.patient_name)</b>
+    </div>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Bill Name</th>
+            <th scope="col">Total Bill</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        <tr>
+            <th scope="row">2</th>
+            <td>Doctors Bill</td>
+            <td> @Html.DisplayFor(model => model.doctor_bill).00</td>
+
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Medicines Bill</td>
+            <td>@Html.DisplayFor(model => model.medicine_bill).00</td>
+
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>Rooms Bill</td>
+            <td>@Html.DisplayFor(model => model.room_bill).00</td>
+
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>Total Bill</td>
+            <td>@Html.DisplayFor(model => model.total_bill).00 Taka</td>
+
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td colspan="3" class="text-center"><h4><b>Done By @Html.DisplayFor(model => model.staff_name)</b></h4></td>
+
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Back to Bill", "Index")
+</div>

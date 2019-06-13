@@ -1,0 +1,94 @@
+﻿@model Hospital_Management.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section admin_navbar{
+    @Html.Partial("_AdminNavbarPartial", "Admitted Patients")
+}
+
+
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doctor_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doctor_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doctor_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doctor_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.room_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.room_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.blood)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blood)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone_no)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

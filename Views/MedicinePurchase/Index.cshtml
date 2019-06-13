@@ -1,0 +1,64 @@
+﻿@model Hospital_Management.Models.Medicine_Purchase
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_TransactionsLayout.cshtml";
+}
+
+@section Transactions_navbar{
+    @Html.Partial("_TransactionsPartial", "Medicine Purchase")
+}
+
+@using (Html.BeginForm("AddMedicine", "MedicinePurchase", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*@Html.HiddenFor(model => model.id)*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.patient_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.patient_id, new SelectList(Model.getAllPatientsName, "Value", "Text"), "-Select Patient-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.patient_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.medicine_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.medicine_id, new SelectList(Model.getAllMedicinesName, "Value", "Text"), "-Select Medicine-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.medicine_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.dateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.dateTime, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.dateTime, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.quantitly, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.quantitly, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.quantitly, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Storehouse", "Index", "Medicine","",new { @class="btn btn-success"})
+</div>
+
+

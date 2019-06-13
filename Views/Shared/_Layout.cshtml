@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <img src="~/Photos/hospital_page_banner.jpg" style="width:1142px; height:100px;" />
+        @RenderSection("navbar", false)
+        @RenderBody()
+        <hr />
+
+
+
+        <footer id="colophon" class="site-footer" role="contentinfo">
+            <div class="row imedica-footer-area" style="color:#ffffff;background:#0291b7; border-width: 0px;border-style: solid; border-color:#a4a4a4;">
+                <div class="imedica-row widget-area">
+                    <div class="container imedica-container">
+                      
+                        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12 imd-footer">
+                            <aside id="text-13" class="widget widget_text">
+                                <h3 class="widget-title text-center"><a href="@Url.Action("Index","OnlineApplications")" style="color:white">Appointment: </a></h3>			
+                                <div class="textwidget text-center" >
+                                   01521-111877<br />
+                                    01929-549171<br />
+                                    09606-276555
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12 imd-footer">
+                            <aside id="text-12" class="widget widget_text">
+                                <h3 class="widget-title">Our Services:</h3>
+                                <div class="textwidget">
+                                    Ambulance : 01714-090000
+                                    <br>
+                                    Duty Manager : 01713-064563
+                                    <br>
+                                    Master Health Check : (02) 8431600
+                                    <br>
+                                    <a href="http://www.apollodhaka.com/contact-us/" style="color:#fff;">Contact Us</a><br>
+
+                                    <h5>Please give your Feedback:</h5>
+                                    Dr. Ratnadeep Chaskar<br>
+                                    Chief Operating Officer<br>
+                                    <a href="mailto:coo@apollodhaka.com">coo@apollodhaka.com</a>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12 imd-footer">
+                            <aside id="text-14" class="widget widget_text">
+                                <h3 class="widget-title">Our Info Center:</h3>			
+                                <div class="textwidget">
+                                   
+                                    Chittagong info : 01714-162759
+                                    <br>
+                                    Sylhet info : 01713-047461
+                                    <br>
+                                    Bogra info : 01713-042500
+                                    <br>
+                                    Khulna info : 01713-240312
+                                    <br>
+                                    Comilla info : 01755-533154
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

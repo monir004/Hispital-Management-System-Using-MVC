@@ -1,0 +1,47 @@
+﻿@model Hospital_Management.Models.Bill
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_TransactionsLayout.cshtml";
+}
+
+@section Transactions_navbar{
+    @Html.Partial("_TransactionsPartial", "Calculate Bill")
+}
+
+@using (Html.BeginForm("BillCalculations","Bill",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.p_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.p_id, new SelectList(Model.getAllPatients, "Value", "Text"), "-Select Patient-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.p_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.s_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.s_id, new SelectList(Model.getAllStaffs, "Value", "Text"), "-Select Staff-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.s_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Calculate Bills" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

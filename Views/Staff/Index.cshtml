@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Hospital_Management.Models.Staff>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section admin_navbar{
+    @Html.Partial("_AdminNavbarPartial", "Staffs")
+}
+
+<a href="@Url.Action("Create", "Staff")" class="btn btn-success">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    Create New
+</a>
+<br /><br />
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone_no)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone_no)
+            </td>
+            <td>
+
+                <a href="@Url.Action("Edit", "Staff", new { id = item.id })" class="btn btn-success">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    Edit
+                </a>
+                <a href="@Url.Action("Details", "Staff", new { id = item.id })" class="btn btn-success">
+                    <span class="glyphicon glyphicon-th-list"></span>
+                    Details
+                </a>
+                <a href="@Url.Action("Delete", "Staff", new { id = item.id })" class="btn btn-success">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    Delete
+                </a>
+
+                @*<span class="btn btn-success"><span class="glyphicon glyphicon-edit"></span> @Html.ActionLink(" Edit", "Edit", new { id = item.id }, new { Style = "color:white" })</span>
+                <p class="btn btn-success"><span class="glyphicon glyphicon-th-list"></span>@Html.ActionLink(" Details", "Details", new { id = item.id }, new { Style = "color:white" }) </p>
+                <p class="btn btn-success"><span class="glyphicon glyphicon-trash"></span>@Html.ActionLink(" Delete", "Delete", new { id = item.id }, new { Style = "color:white" }) </p>*@
+            </td>
+        </tr>
+    }
+
+</table>

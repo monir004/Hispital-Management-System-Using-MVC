@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "WrongLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section navbar{
+    @Html.Partial("_NavbarPartial", "Login")
+}
+<div class="alert alert-warning">
+    <strong>Warning!</strong>Your login is incorrect.Please enter correct credentials.
+</div>
+<a href="@Url.Action("Index","Login")" class="btn btn-success">Back</a>
+

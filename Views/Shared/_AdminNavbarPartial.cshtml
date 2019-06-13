@@ -1,0 +1,52 @@
+﻿@model string
+@{
+    List<KeyValuePair<string, string>> nav_controllers = new List<KeyValuePair<string, string>>()
+    {
+        new KeyValuePair<string, string>("Admitted Patients","Patient"),
+        new KeyValuePair<string, string>("Applications","Applications"),
+        new KeyValuePair<string, string>("Doctors","Doctor"),
+        //Value : 2nd parameter controller name...
+        //Key : first one the display text of the link....
+        new KeyValuePair<string, string>("Staffs","Staff"),
+        new KeyValuePair<string, string>("Room Category","RoomCategory"),
+        new KeyValuePair<string, string>("Storehouse","Medicine"),
+        //new KeyValuePair<string, string>("Medicine Purchase","MedicinePurchase"),
+        //new KeyValuePair<string, string>("Doctor Bill","DoctorBill"),
+        //new KeyValuePair<string, string>("Room Bill","RoomBill")
+
+    };
+}
+<div class="navbar navbar-inverse">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            @foreach (KeyValuePair<string, string> nav in nav_controllers)
+            {
+                if (nav.Key.Equals(Model))
+                {
+                    <li class="active">@Html.ActionLink(nav.Key, "", nav.Value, null, new { style = "color:red;  font-size: 1.3em;line-height: 1.5; font-size: 1.3em;" })</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink(nav.Key, "", nav.Value, null, new { style = "font-size: 1.3em;line-height: 1.5; font-size: 1.3em;" })</li>
+                }
+            }
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            @{
+                  <li>@Html.ActionLink("Logout","Index", "Home", null, new { style = "font-size: 1.3em;line-height: 1.5; font-size: 1.3em;" })</li>
+            }
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            @{
+                <li>@Html.ActionLink("Transactions", "Index", "MedicinePurchase", null, new { style = "font-size: 1.3em;line-height: 1.5; font-size: 1.3em; margin-right:25px;color:red;" })</li>
+            }
+        </ul>
+    </div>
+</div>
